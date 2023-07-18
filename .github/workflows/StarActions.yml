@@ -32,7 +32,7 @@ jobs:
           - build_variant: "mt7621+03+12-usb"
             targets: "NEWIFI3"
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Prepare environment
         run: |
           sudo apt update
@@ -76,7 +76,7 @@ jobs:
           cd ${images_dir}; md5sum *.trx |tee md5sum.txt; 7z a -mx=9 ${image_name}.7z ./*
           echo "image_name=${image_name}" >> $GITHUB_ENV
       - name: Upload images to Artifact
-        uses: actions/upload-artifact@v2.2.1
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ env.image_name }}
           path: ${{ env.images_dir }}/*.7z
